@@ -33,6 +33,19 @@ root                    (project root folder)
 +-- README.md           (general info)
 ```
 
+### Class Structure
+| Class                                         | Description                                              | Stereotypes        | Public Methods                                                                   | Dependencies                         |
+| --------------------------------------------- | -------------------------------------------------------- | ------------------ | -------------------------------------------------------------------------------- | ------------------------------------ |
+| Director                                      | Controls play sequences.                                 | Controller         | start\_game                                                                      | All Local Classes                    |
+| Point                                         | Holds information for the position of the word.          | Information Holder | get\_x<br>set\_x<br>get\_y<br>set\_y<br>add<br>equals<br>                        |                                      |
+| Word                                          | Holds information for a given word on screen.            | Information Holder | (All Point Methods)<br>compare\_word                                             | Point (Inherited)                    |
+| CurWords                                      | Contains information for all words on screen.            | Information Holder | check\_word\_match<br>add\_word<br>remove\_word                                  | WordListService (Inherited?)<br>Word |
+| InputService                                  | Detects player input and translates keypresses.          | Service Provider   | get\_letter<br>Get\_key                                                          |                                      |
+| OutputService                                 | Sends outputs to the console.                            | Service Provider   | clear\_screen<br>place\_word<br>del\_word<br>flush\_buffer                       |                                      |
+| WordListService                               | Fetches words from given wordlists to put on the screen. | Service Provider   | get\_new\_word                                                                   | FileService (Inherited)              |
+| FileService                                   | Handles file inputs and outputs.                         | Service Provider   | read\_file\_line<br>read\_whole\_file<br>write\_file\_line<br>write\_whole\_file |                                      |
+| SettingsService<br>(For Stretch Requirements) | Gets persistent user data and settings.                  | Service Provider   | get\_hi\_score<br>get\_game\_mode                                                | FileService (Inherited)              |
+
 ## Required Technologies
 ---
 * Python 3.8.0
@@ -40,4 +53,4 @@ root                    (project root folder)
 
 ## Authors
 ---
-* # TODO: Add names and emails here
+* Carson Bush - hyperdriveguy@byui.edu
