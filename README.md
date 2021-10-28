@@ -42,8 +42,8 @@ root                    (project root folder)
 | CurWords                                      | Contains information for all words on screen.            | Information Holder | check\_word\_match<br>add\_word<br>remove\_word                                  | WordListService (Inherited?)<br>Word |
 | InputService                                  | Detects player input and translates keypresses.          | Service Provider   | get\_letter<br>Get\_key                                                          |                                      |
 | OutputService                                 | Sends outputs to the console.                            | Service Provider   | clear\_screen<br>place\_word<br>del\_word<br>flush\_buffer                       |                                      |
-| WordListService                               | Fetches words from given wordlists to put on the screen. | Service Provider   | get\_new\_word                                                                   | FileService (Inherited)              |
 | FileService                                   | Handles file inputs and outputs.                         | Service Provider   | read\_file\_line<br>read\_whole\_file<br>write\_file\_line<br>write\_whole\_file |                                      |
+| WordListService                               | Fetches words from given wordlists to put on the screen. | Service Provider   | get\_new\_word                                                                   | FileService (Inherited)              |
 | SettingsService<br>(For Stretch Requirements) | Gets persistent user data and settings.                  | Service Provider   | get\_hi\_score<br>get\_game\_mode                                                | FileService (Inherited)              |
 
 ## Required Technologies
