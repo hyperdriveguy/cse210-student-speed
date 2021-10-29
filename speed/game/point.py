@@ -45,8 +45,9 @@ class Point:
             boolean: True if both x and y are equal; false if otherwise.
         """
         return self._x == other.get_x() and self._y == other.get_y()
-
-    def get_x(self):
+    
+    @property
+    def x(self):
         """Gets the horizontal distance.
         
         Args:
@@ -56,6 +57,26 @@ class Point:
             integer: The horizontal distance.
         """
         return self._x
+    
+    @x.setter
+    def x(self, x: int):
+        self._x = x
+    
+    @property
+    def y(self):
+        """Gets the vertical distance.
+        
+        Args:
+            self (Point): An instance of Point.
+            
+        Returns:
+            integer: The vertical distance.
+        """
+        return self._y
+    
+    @y.setter
+    def y(self, y: int):
+        self._y = y
 
     def get_y(self):
         """Gets the vertical distance.
