@@ -36,15 +36,24 @@ class OutputService:
 
         Args:
             self (OutputService): An instance of OutputService.
-            actor (Actor): The actor to render.
+            word (Word): The word to render on screen.
         """ 
         text = word.get_word()
         x = word.get_x()
         y = word.get_y()
         self._screen.print_at(text, x, y, 7) # WHITE
     
-    def del_word(self):
-        pass
+    def del_word(self, word):
+        """Overwrites the given word on the screen.
+
+        Args:
+            self (OutputService): An instance of OutputService.
+            word (Word): The word to delete from the screen.
+        """
+        length = word.length()
+        x = word.get_x()
+        y = word.get_y()
+        self._screen.print_at((constants.BACKGROUND * length), x, y, 7) # WHITE
     
     def flush_buffer(self):
         """Renders the screen.
