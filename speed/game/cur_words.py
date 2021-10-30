@@ -1,3 +1,4 @@
+from math import radians
 import random
 from game import constants
 from game.word import Word
@@ -15,7 +16,16 @@ class CurWords:
         self._max_words = constants.STARTING_WORDS
         self._word_store = set()
 
+    @property
+    def max_words(self):
+        return self._max_words
     
+    @max_words.setter
+    def max_words(self, max_words: int):
+        if max_words < 1:
+            return
+        self._max_words = max_words
+
     def add_new_word(self, x, y):
         if len(self._word_store) == self._max_words:
             return
