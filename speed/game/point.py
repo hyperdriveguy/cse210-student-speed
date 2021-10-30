@@ -16,12 +16,16 @@ class Point:
             self (Point): An instance of Point.
             x (integer): A horizontal distance.
             y (integer): A vertical distance.
+            velocity x (integer): A horizontal velocity.
+            velocity y (integer): A vertical velocity.
         """
         self._x = x
         self._y = y
+        self._velocity_x = 0
+        self._velocity_y = 0
 
-    def add(self, other):
-        """Gets a new point that is the sum of this and the given one.
+    def add_point(self, other):
+        """Gets a new point instance that is the sum of this and the given one.
 
         Args:
             self (Point): An instance of Point.
@@ -46,7 +50,33 @@ class Point:
         """
         return self._x == other.get_x() and self._y == other.get_y()
 
-    def get_x(self):
+    def update_position(self):
+        """Changes the position based on the point's velocity.
+
+        Args:
+            self (Point): An instance of Point.
+        """
+        self._x += self._velocity_x
+        self._y += self._velocity_y
+
+    @property
+    def x_velocity(self):
+        return self._velocity_x
+    
+    @x_velocity.setter
+    def x_velocity(self, x_velocity: int):
+        self._velocity_x = x_velocity
+
+    @property
+    def y_velocity(self):
+        return self._velocity_y
+    
+    @y_velocity.setter
+    def y_velocity(self, y_velocity: int):
+        self._velocity_y = y_velocity
+    
+    @property
+    def x(self):
         """Gets the horizontal distance.
         
         Args:
@@ -56,8 +86,22 @@ class Point:
             integer: The horizontal distance.
         """
         return self._x
-
-    def get_y(self):
+    
+    @x.setter
+    def x(self, x: int):
+        """Sets the horizontal distance.
+        
+        Args:
+            self (Point): An instance of Point.
+            
+        Returns:
+            integer: The horizontal distance.
+        """
+        return self._x
+        self._x = x
+    
+    @property
+    def y(self):
         """Gets the vertical distance.
         
         Args:
@@ -67,8 +111,20 @@ class Point:
             integer: The vertical distance.
         """
         return self._y
+    
+    @y.setter
+    def y(self, y: int):
+        """Sets the vertical distance.
+        
+        Args:
+            self (Point): An instance of Point.
+            
+        Returns:
+            integer: The vertical distance.
+        """
+        self._y = y
 
-    def reverse(self):
+    def new_reverse(self):
         """Gets a new Point that is the reverse of this one.
         
         Args:
