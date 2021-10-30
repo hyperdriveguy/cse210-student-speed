@@ -14,8 +14,11 @@ class CurWords:
                 pass
         self._max_words = constants.STARTING_WORDS
         self._word_store = set()
+
     
     def add_new_word(self, x, y):
+        if len(self._word_store) == self._max_words:
+            return
         rand_list = random.choice(self._word_lists)
         word_fetch = ''
         while word_fetch == '' or self.check_word_match(word_fetch):
@@ -35,4 +38,3 @@ class CurWords:
     def move_words(self):
         for word in self._word_store:
             word.update_position()
-
