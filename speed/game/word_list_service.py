@@ -10,7 +10,7 @@ class WordListService(FileService):
     
     @property
     def new_word(self):
-         return super().read_line(
+         return self.read_line(
             random.randint(1, super().num_lines),
             check_cache=self._user_list,
             strip=True)
