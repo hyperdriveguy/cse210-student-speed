@@ -1,5 +1,4 @@
 import linecache
-from os import EX_PROTOCOL
 from typing import Iterable
 
 class FileService:

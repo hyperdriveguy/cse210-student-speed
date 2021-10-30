@@ -43,7 +43,7 @@ root                    (project root folder)
 | InputService                                  | Detects player input and translates keypresses.          | Service Provider   | get\_letter<br>get\_key                                                          |                                      |
 | OutputService                                 | Sends outputs to the console.                            | Service Provider   | clear\_screen<br>place\_word<br>del\_word<br>flush\_buffer                       |                                      |
 | FileService                                   | Handles file inputs and outputs.                         | Service Provider   | read\_line<br>read\_file<br>write\_file<br>content (property)                    |                                      |
-| WordListService                               | Fetches words from given wordlists to put on the screen. | Service Provider   | get\_new\_word                                                                   | FileService (Inherited)              |
+| WordListService                               | Fetches words from given wordlists to put on the screen. | Service Provider   | new\_word (property)                                                             | FileService (Inherited)              |
 | SettingsService<br>(For Stretch Requirements) | Gets persistent user data and settings.                  | Service Provider   | get\_hi\_score<br>get\_game\_mode                                                | FileService (Inherited)              |
 
 ## Required Technologies
