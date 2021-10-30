@@ -51,7 +51,13 @@ class Point:
         return self._x == other.get_x() and self._y == other.get_y()
 
     def update_position(self):
+        """Changes the position based on the point's velocity.
 
+        Args:
+            self (Point): An instance of Point.
+        """
+        self._x += self._velocity_x
+        self._y += self._velocity_y
 
     @property
     def x_velocity(self):
@@ -118,7 +124,7 @@ class Point:
         """
         self._y = y
 
-    def reverse(self):
+    def new_reverse(self):
         """Gets a new Point that is the reverse of this one.
         
         Args:
