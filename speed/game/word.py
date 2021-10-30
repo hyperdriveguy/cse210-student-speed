@@ -13,6 +13,7 @@ class Word(Point):
     
     def compare_word(self, other_str: str):
         return other_str == self._word
-    
+
+    @property
     def length(self):
         return len(self._word)
