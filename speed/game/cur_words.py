@@ -1,4 +1,3 @@
-from math import radians
 import random
 from game import constants
 from game.word import Word
