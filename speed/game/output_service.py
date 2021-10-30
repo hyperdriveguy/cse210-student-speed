@@ -50,7 +50,7 @@ class OutputService:
             self (OutputService): An instance of OutputService.
             word (Word): The word to delete from the screen.
         """
-        length = word.length()
+        length = word.length
         x = word.x
         y = word.y
         self._screen.print_at((constants.BACKGROUND * length), x, y, 7) # WHITE
