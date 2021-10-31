@@ -1,3 +1,4 @@
+import random
 from time import sleep
 from game import constants
 from game.score import Score
@@ -36,7 +37,7 @@ class Director:
         
     def prepare_game(self):
         for _ in range(self._cur_words.max_words):
-            self._cur_words.add_new_word()
+            self._cur_words.add_new_word(random.randint(1, 5))
     
     def start_game(self):
         """Starts the game loop to control the sequence of play.
@@ -73,6 +74,7 @@ class Director:
         if self._input_service.get_letter() == '*':
             letters = self._buffer.get_letters()
             self._cur_words.check_word_match(letters)
+        self._cur_words.move_words()
             
 
 
