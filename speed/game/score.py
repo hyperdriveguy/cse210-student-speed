@@ -22,13 +22,13 @@ class Score(Word):
         self._total_points = 0
         self._word = f"Score: {self._total_points}"
     
-    def set_points(self, other_str):
+    def set_points(self, other_str, mod):
         """Sets the points for a word the player has correctly typed.
         
         Args:
             self (Score): an instance of Score
         """
-        self._points += len(other_str)
+        self._points += len(other_str) * mod
 
     @property
     def points(self):

@@ -52,3 +52,7 @@ class CurWords:
     def move_words(self):
         for word in self._word_store:
             word.update_position()
+    
+    @property
+    def empty_word_store(self):
+        return len(self._word_store) == 0
