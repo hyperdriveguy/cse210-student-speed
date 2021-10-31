@@ -44,6 +44,14 @@ class CurWords:
     def remove_word(self, to_remove):
         self._word_store.remove(to_remove)
     
+    def start_x(self):
+        self.x = random.randint(1, constants.MAX_X - 2)
+        return self.x
+        
+    def start_y(self):
+        self.y = random.randint(1, constants.MAX_Y - 2)
+        return self.y
+    
     def move_words(self):
         for word in self._word_store:
             word.update_position()

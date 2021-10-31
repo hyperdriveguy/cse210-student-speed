@@ -111,7 +111,6 @@ class Point:
         Returns:
             integer: The horizontal distance.
         """
-        return self._x
         self._x = x
     
     @property

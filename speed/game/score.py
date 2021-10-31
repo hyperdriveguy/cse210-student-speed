@@ -17,7 +17,7 @@ class Score(Word):
         Args:
             self (Score): an instance of Score.
         """
-        super().__init__(1, 0)
+        super().__init__('', 1, 0)
         self._points = 0
         self._total_points = 0
         self._word = f"Score: {self._total_points}"
