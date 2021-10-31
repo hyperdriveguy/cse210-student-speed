@@ -4,7 +4,7 @@ from game.word_list_service import WordListService
 
 class Word(Point):
 
-    def __init__(self, word, x, y, max_vel=1):
+    def __init__(self, word, x, y, max_vel=0):
         super().__init__(x, y)
         self._word = word
         self._max_vel = max_vel
