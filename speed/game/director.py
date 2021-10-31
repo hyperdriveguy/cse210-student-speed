@@ -35,10 +35,8 @@ class Director:
         self._cur_words = CurWords()
         
     def prepare_game(self):
-        for i in range(5):
-            x = self._cur_words.start_x()
-            y = self._cur_words.start_y()
-            self._cur_words.add_new_word(x, y)
+        for _ in range(self._cur_words.max_words):
+            self._cur_words.add_new_word()
     
     def start_game(self):
         """Starts the game loop to control the sequence of play.
@@ -92,5 +90,5 @@ class Director:
         self._output_service.place_word(self._score)
         self._output_service.place_word(self._buffer)
         if self._input_service.get_letter() == '*':
-            self._output_service.flush_buffer()
-
+            pass
+        self._output_service.flush_buffer()
