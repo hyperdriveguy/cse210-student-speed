@@ -25,9 +25,11 @@ class CurWords:
             return
         self._max_words = max_words
 
-    def add_new_word(self, x, y):
+    def add_new_word(self):
         if len(self._word_store) == self._max_words:
             return
+        x = random.randint(1, constants.MAX_X - 2)
+        y = random.randint(1, constants.MAX_Y - 2)
         rand_list = random.choice(self._word_lists)
         word_fetch = ''
         while word_fetch == '' or self.check_word_match(word_fetch):
@@ -43,14 +45,6 @@ class CurWords:
     
     def remove_word(self, to_remove):
         self._word_store.remove(to_remove)
-    
-    def start_x(self):
-        self.x = random.randint(1, constants.MAX_X - 2)
-        return self.x
-        
-    def start_y(self):
-        self.y = random.randint(1, constants.MAX_Y - 2)
-        return self.y
     
     def move_words(self):
         for word in self._word_store:
