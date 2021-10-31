@@ -5,7 +5,7 @@ import os
 
 MAX_X = 60
 MAX_Y = 20
-FPS = 10
+FPS = 12.5
 # Calculated from FPS
 FRAME_LENGTH = 1 / FPS
 STARTING_WORDS = 5
