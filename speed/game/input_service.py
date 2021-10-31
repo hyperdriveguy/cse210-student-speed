@@ -31,10 +31,10 @@ class InputService:
         result = ""
         event = self._screen.get_key()
         if not event is None:
-            if event == 27:
+            if event == 27 or event == -1:
                 sys.exit()
-            elif event == 8:
-                result = chr(8)
+            elif event == -300 or event == -102:
+                result = '\x08'
             elif event == 10 or event == 13: 
                 result = "*"
             elif event >= 97 and event <= 122: 
