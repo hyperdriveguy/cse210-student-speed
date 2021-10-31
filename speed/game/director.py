@@ -62,6 +62,10 @@ class Director:
         """
         letter = self._input_service.get_letter()
         self._buffer.add_letter(letter)
+        if letter == '*':
+            self._buffer.clear_letters()
+            self._output_service.place_word(self._buffer)
+
 
 
     def _do_updates(self):
@@ -91,6 +95,4 @@ class Director:
             self._output_service.place_word(w)
         self._output_service.place_word(self._score)
         self._output_service.place_word(self._buffer)
-        if self._input_service.get_letter() == '*':
-            pass
         self._output_service.flush_buffer()

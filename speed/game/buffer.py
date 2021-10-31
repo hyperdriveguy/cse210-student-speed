@@ -17,3 +17,4 @@ class Buffer(Word):
 
     def clear_letters(self):
         self._letters = ''
+        self._word = f'Buffer: {self._letters}'
