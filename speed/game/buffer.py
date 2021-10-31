@@ -15,7 +15,7 @@ class Buffer(Word):
         self._update_word()
     
     def del_letter(self):
-        self._letters = self._letters[:-1]
+        self._letters = self._letters[:-2]
         self._update_word()
     
     @property
