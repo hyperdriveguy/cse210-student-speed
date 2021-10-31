@@ -28,11 +28,10 @@ class Score(Word):
         Args:
             self (Score): an instance of Score
         """
-        if self.compare_word(other_str):
-            for i in self.length():
-                self._points += 1
+        self._points += len(other_str)
 
-    def get_points(self):
+    @property
+    def points(self):
         """Retrieves the points for a word the player has correctly typed.
         
         Args:

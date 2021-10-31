@@ -79,7 +79,7 @@ class Director:
             letters = self._buffer.letters[:-1]
             if self._cur_words.check_word_match(letters):
                 self._score.set_points(letters)
-                points = self._score.get_points()
+                points = self._score.points
                 self._score.add_points(points)
                 removed = self._cur_words.remove_word(letters)
                 self._output_service.del_word(removed)
