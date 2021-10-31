@@ -1,3 +1,6 @@
+from game import constants
+
+
 class Point:
     """Represents distance from an origin (0, 0).
 
@@ -44,7 +47,15 @@ class Point:
             self (Point): An instance of Point.
         """
         self._x += self._velocity_x
+        if self._x < 1:
+            self._x += constants.MAX_X - 2
+        elif self.x > constants.MAX_X - 2:
+            self._x -= constants.MAX_X - 2
         self._y += self._velocity_y
+        if self._y < 1:
+            self._y += constants.MAX_Y - 2
+        elif self.y > constants.MAX_Y - 2:
+            self._y -= constants.MAX_Y - 2
 
     @property
     def x_velocity(self):
