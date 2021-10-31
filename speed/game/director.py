@@ -72,10 +72,11 @@ class Director:
             self (Director): An instance of Director.
         """
         if self._buffer.last_letter == '*':
-            self._buffer.clear_letters()
             letters = self._buffer.letters[:-1]
             if self._cur_words.check_word_match(letters):
-                self._cur_words.remove_word(letters)
+                removed = self._cur_words.remove_word(letters)
+                self._output_service.del_word(removed)
+            self._buffer.clear_letters()
         elif self._buffer.last_letter == '\x08':
             self._buffer.del_letter()
         self._cur_words.move_words()

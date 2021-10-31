@@ -46,7 +46,8 @@ class CurWords:
     def remove_word(self, to_remove):
         for w_index, w in enumerate(self._word_store):
             if w.word == to_remove:
-                self._word_store.pop(w_index)
+                popped = self._word_store.pop(w_index)
+                return popped
     
     def move_words(self):
         for word in self._word_store:
