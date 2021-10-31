@@ -71,9 +71,13 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        if self._input_service.get_letter() == '*':
-            letters = self._buffer.get_letters()
-            self._cur_words.check_word_match(letters)
+        if self._buffer.last_letter == '*':
+            self._buffer.clear_letters()
+            letters = self._buffer.letters[:-1]
+            if self._cur_words.check_word_match(letters):
+                self._cur_words.remove_word(letters)
+        elif self._buffer.last_letter == '\x08':
+            self._buffer.del_letter()
         self._cur_words.move_words()
             
 
@@ -91,6 +95,4 @@ class Director:
             self._output_service.place_word(w)
         self._output_service.place_word(self._score)
         self._output_service.place_word(self._buffer)
-        if self._input_service.get_letter() == '*':
-            pass
         self._output_service.flush_buffer()
