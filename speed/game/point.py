@@ -1,3 +1,6 @@
+from game import constants
+
+
 class Point:
     """Represents distance from an origin (0, 0).
 
@@ -6,7 +9,10 @@ class Point:
 
     Attributes:
         _x (integer): The horizontal distance.
-        _y (Point): The vertical distance.
+        _y (integer): The vertical distance.
+        _velocity_x (integer): A horizontal velocity.
+        _velocity_y (integer): A vertical velocity.
+
     """
     
     def __init__(self, x, y):
@@ -16,27 +22,11 @@ class Point:
             self (Point): An instance of Point.
             x (integer): A horizontal distance.
             y (integer): A vertical distance.
-            velocity x (integer): A horizontal velocity.
-            velocity y (integer): A vertical velocity.
         """
         self._x = x
         self._y = y
         self._velocity_x = 0
         self._velocity_y = 0
-
-    def add_point(self, other):
-        """Gets a new point instance that is the sum of this and the given one.
-
-        Args:
-            self (Point): An instance of Point.
-            other (Point): The Point to add.
-
-        Returns:
-            Point: A new Point that is the sum.
-        """
-        x = self._x + other.get_x()
-        y = self._y + other.get_y()
-        return Point(x, y)
 
     def equals(self, other):
         """Whether or not this Point is equal to the given one.
@@ -48,7 +38,7 @@ class Point:
         Returns: 
             boolean: True if both x and y are equal; false if otherwise.
         """
-        return self._x == other.get_x() and self._y == other.get_y()
+        return self._x == other.x and self._y == other.y
 
     def update_position(self):
         """Changes the position based on the point's velocity.
@@ -57,22 +47,57 @@ class Point:
             self (Point): An instance of Point.
         """
         self._x += self._velocity_x
+        if self._x < 1:
+            self._x += constants.MAX_X - 2
+        elif self.x > constants.MAX_X - 2:
+            self._x -= constants.MAX_X - 2
         self._y += self._velocity_y
+        if self._y < 1:
+            self._y += constants.MAX_Y - 2
+        elif self.y > constants.MAX_Y - 2:
+            self._y -= constants.MAX_Y - 2
 
     @property
     def x_velocity(self):
+        """Gets the horizontal velocity.
+        
+        Args:
+            self (Point): An instance of Point
+            
+        Returns:
+            integer: The horizontal velocity
+        """
+
         return self._velocity_x
     
     @x_velocity.setter
     def x_velocity(self, x_velocity: int):
+        """Sets the horizontal velocity.
+        
+        Args:
+            self (Point): An instance of Point
+        """
         self._velocity_x = x_velocity
 
     @property
     def y_velocity(self):
+        """Gets the vertical velocity.
+        
+        Args:
+            self (Point): An instance of Point
+            
+        Returns:
+            integer: The vertical velocity
+        """
         return self._velocity_y
     
     @y_velocity.setter
     def y_velocity(self, y_velocity: int):
+        """Sets the vertical velocity.
+        
+        Args:
+            self (Point): An instance of Point
+        """
         self._velocity_y = y_velocity
     
     @property
@@ -97,7 +122,6 @@ class Point:
         Returns:
             integer: The horizontal distance.
         """
-        return self._x
         self._x = x
     
     @property

@@ -1,3 +1,6 @@
+"""Contains constants used throughout the game.
+"""
+
 import os
 
 MAX_X = 60
