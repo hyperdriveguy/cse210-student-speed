@@ -18,8 +18,10 @@ class Director:
         input_service (InputService): The input mechanism.
         keep_playing (boolean): Whether or not the game can continue.
         output_service (OutputService): The output mechanism.
-        score (Score): The current score.
-        
+        _speed_mod = set speed
+        _score (Score): The current score
+        _buffer (Buffer): state of the buffer
+        _cur_words (CurWords): words on the screen        
     """
 
     def __init__(self, input_service, output_service):
@@ -37,6 +39,10 @@ class Director:
         self._cur_words = CurWords()
         
     def _prepare_game(self):
+        """Prep for the game. Adding words to be displayed.
+        
+        Args:
+            self (Director): An instance of Director"""
         for _ in range(self._cur_words.max_words):
             self._cur_words.add_new_word(random.randint(1, 2 + self._speed_mod))
     
@@ -56,7 +62,7 @@ class Director:
 
     def _get_inputs(self):
         """Gets the inputs at the beginning of each round of play. In this case,
-        that means getting the letters the user types.
+        that means getting the letters the user types and adding it to the buffer to be displayed.
 
         Args:
             self (Director): An instance of Director.
@@ -66,7 +72,7 @@ class Director:
 
     def _do_updates(self):
         """Updates the important game information for each round of play. In 
-        this case, that means checking for a collision and updating the score.
+        this case, that means checking for a word submission, updating the score, and clearing the buffer.
 
         Args:
             self (Director): An instance of Director.
@@ -94,8 +100,8 @@ class Director:
 
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
-        this case, that means checking if there are stones left and declaring 
-        the winner.
+        this case, this means displaying the score, words, and buffer. 
+        If the user guess all the words, see if they want to keep playing. 
 
         Args:
             self (Director): An instance of Director.
