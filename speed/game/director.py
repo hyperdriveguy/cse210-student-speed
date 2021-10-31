@@ -62,9 +62,9 @@ class Director:
         """
         letter = self._input_service.get_letter()
         self._buffer.add_letter(letter)
-        if letter == '*':
-            self._buffer.clear_letters()
-            self._output_service.place_word(self._buffer)
+        # if letter == '*':
+        #     self._buffer.clear_letters()
+        #     self._output_service.place_word(self._buffer)
 
 
 
@@ -76,10 +76,14 @@ class Director:
             self (Director): An instance of Director.
         """
         if self._buffer.last_letter == '*':
-            self._buffer.clear_letters()
+            
             letters = self._buffer.letters[:-1]
             if self._cur_words.check_word_match(letters):
+                self._score.set_points(letters)
+                points = self._score.get_points()
+                self._score.add_points(points)
                 self._cur_words.remove_word(letters)
+            self._buffer.clear_letters()
         elif self._buffer.last_letter == '\x08':
             self._buffer.del_letter()
         self._cur_words.move_words()
